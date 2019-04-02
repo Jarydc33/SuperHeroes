@@ -42,7 +42,7 @@ namespace SuperHeroProject.Controllers
             {
                 db.SuperHeroes.Add(superHero);
                 db.SaveChanges();
-                return RedirectToAction("Index"); //this should change
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -50,7 +50,6 @@ namespace SuperHeroProject.Controllers
             }
         }
 
-        // GET: SuperHeroes/Edit/5
         public ActionResult Edit(int id)
         {
             SuperHero editSuperHero = new SuperHero();
@@ -58,7 +57,6 @@ namespace SuperHeroProject.Controllers
             return View(editSuperHero);
         }
 
-        // POST: SuperHeroes/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection,SuperHero heroToChange)
         {
@@ -81,20 +79,22 @@ namespace SuperHeroProject.Controllers
             }
         }
 
-        // GET: SuperHeroes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            SuperHero deleteSuperHero = new SuperHero();
+            deleteSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
+            return View(deleteSuperHero);
         }
 
-        // POST: SuperHeroes/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, FormCollection collection, SuperHero deletedHero)
         {
+            SuperHero heroToDelete = new SuperHero();
             try
             {
-                // TODO: Add delete logic here
-
+                heroToDelete = db.SuperHeroes.Where(s => s.Id == deletedHero.Id).FirstOrDefault();
+                db.SuperHeroes.Remove(heroToDelete);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
