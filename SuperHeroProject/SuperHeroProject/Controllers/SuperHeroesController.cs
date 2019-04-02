@@ -19,7 +19,6 @@ namespace SuperHeroProject.Controllers
             return View(allSuperHeroes);
         }
 
-        // GET: SuperHeroes/Details/5
         public ActionResult Details(int id)
         {
             SuperHero detailsSuperHero = new SuperHero();
@@ -27,14 +26,12 @@ namespace SuperHeroProject.Controllers
             return View(detailsSuperHero);
         }
 
-        // GET: SuperHeroes/Create
         public ActionResult Create()
         {
             SuperHero superHero = new SuperHero();
             return View(superHero);
         }
 
-        // POST: SuperHeroes/Create
         [HttpPost]
         public ActionResult Create(SuperHero superHero)
         {
@@ -60,7 +57,7 @@ namespace SuperHeroProject.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection,SuperHero heroToChange)
         {
-            SuperHero updatedSuperHero = new SuperHero();
+            SuperHero updatedSuperHero = db.SuperHeroes.Find(id);
             try
             {
                 updatedSuperHero = db.SuperHeroes.Where(s => s.Id == heroToChange.Id).FirstOrDefault();
@@ -81,18 +78,16 @@ namespace SuperHeroProject.Controllers
 
         public ActionResult Delete(int id)
         {
-            SuperHero deleteSuperHero = new SuperHero();
-            deleteSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
+            SuperHero deleteSuperHero = db.SuperHeroes.Find(id);
             return View(deleteSuperHero);
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection, SuperHero deletedHero)
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            SuperHero heroToDelete = new SuperHero();
             try
             {
-                heroToDelete = db.SuperHeroes.Where(s => s.Id == deletedHero.Id).FirstOrDefault();
+                SuperHero heroToDelete = db.SuperHeroes.Find(id);
                 db.SuperHeroes.Remove(heroToDelete);
                 db.SaveChanges();
                 return RedirectToAction("Index");
