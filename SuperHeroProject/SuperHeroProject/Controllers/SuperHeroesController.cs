@@ -14,15 +14,13 @@ namespace SuperHeroProject.Controllers
 
         public ActionResult Index()
         {
-            List<SuperHero> allSuperHeroes = new List<SuperHero>();
-            allSuperHeroes = db.SuperHeroes.Select(s => s).ToList();
+            var allSuperHeroes = db.SuperHeroes.ToList();
             return View(allSuperHeroes);
         }
 
         public ActionResult Details(int id)
         {
-            SuperHero detailsSuperHero = new SuperHero();
-            detailsSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
+            var detailsSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
             return View(detailsSuperHero);
         }
 
@@ -49,13 +47,12 @@ namespace SuperHeroProject.Controllers
 
         public ActionResult Edit(int id)
         {
-            SuperHero editSuperHero = new SuperHero();
-            editSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
+            var editSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
             return View(editSuperHero);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection,SuperHero heroToChange)
+        public ActionResult Edit(int id, SuperHero heroToChange)
         {
             SuperHero updatedSuperHero = db.SuperHeroes.Find(id);
             try
