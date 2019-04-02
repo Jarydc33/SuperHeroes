@@ -11,16 +11,20 @@ namespace SuperHeroProject.Controllers
     {
 
         ApplicationDbContext db = new ApplicationDbContext();
-        // GET: SuperHeroes
+
         public ActionResult Index()
         {
-            return View();
+            List<SuperHero> allSuperHeroes = new List<SuperHero>();
+            allSuperHeroes = db.SuperHeroes.Select(s => s).ToList();
+            return View(allSuperHeroes);
         }
 
         // GET: SuperHeroes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SuperHero detailsSuperHero = new SuperHero();
+            detailsSuperHero = db.SuperHeroes.Where(s => s.Id == id).FirstOrDefault();
+            return View(detailsSuperHero);
         }
 
         // GET: SuperHeroes/Create
@@ -38,7 +42,7 @@ namespace SuperHeroProject.Controllers
             {
                 db.SuperHeroes.Add(superHero);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index"); //this should change
             }
             catch
             {
