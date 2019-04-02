@@ -4,18 +4,12 @@
     ViewBag.Title = "SuperHeroes";
 }
 
-<h2>SupherHeroes</h2>
+<h2>SuperHeroes</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-    </tr>
-</table>
 
 <img src="~/Images/punisher.jpg" />
 <br />
+<p>Click here to add a new SuperHero! @Html.ActionLink("Create", "Create")</p>
 
 @foreach (var item in Model)
 {
@@ -30,5 +24,5 @@
         </td>
     </tr>
     <br>
-    
+
 }
