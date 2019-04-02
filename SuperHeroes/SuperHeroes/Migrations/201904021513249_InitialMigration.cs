@@ -31,6 +31,19 @@ namespace SuperHeroes.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.SuperHeroes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        name = c.String(),
+                        alterName = c.String(),
+                        ability = c.String(),
+                        secondAbility = c.String(),
+                        catchphrase = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -92,6 +105,7 @@ namespace SuperHeroes.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.SuperHeroes");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
         }

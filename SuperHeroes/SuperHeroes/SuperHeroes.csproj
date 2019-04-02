@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EBF64F4E-3CC9-4B60-94EF-7D3E95DB39C9}</ProjectGuid>
+    <ProjectGuid>{84C09B6A-A1BB-43AE-A357-30F5DCF11442}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -176,12 +176,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SuperHeroesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904021445277_InitialMigration.cs" />
-    <Compile Include="Migrations\201904021445277_InitialMigration.Designer.cs">
-      <DependentUpon>201904021445277_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201904021513249_InitialMigration.cs" />
+    <Compile Include="Migrations\201904021513249_InitialMigration.Designer.cs">
+      <DependentUpon>201904021513249_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -247,6 +248,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\SuperHeroes\Create.cshtml" />
+    <Content Include="Views\SuperHeroes\Delete.cshtml" />
+    <Content Include="Views\SuperHeroes\Edit.cshtml" />
+    <Content Include="Views\SuperHeroes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,8 +270,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904021445277_InitialMigration.resx">
-      <DependentUpon>201904021445277_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904021513249_InitialMigration.resx">
+      <DependentUpon>201904021513249_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -285,9 +290,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50163</DevelopmentServerPort>
+          <DevelopmentServerPort>50362</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50163/</IISUrl>
+          <IISUrl>http://localhost:50362/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
